@@ -2,75 +2,57 @@
 #include <vector>
 #include <algorithm>
 #include <cmath>
+#include <string>
 
 using namespace std;
 
-void print(vector<int>& a)
+int getValue(char c)
 {
-    cout << a.size() << " ";
-    for (int i = 0; i < a.size(); i++)
-    {
-        if (i == a.size() - 1) cout << a[i];
-        else cout << a[i] << " ";
-    }
-}
-
-int getValue(char& c)
-{
-    // Если с - число [0; 9]
     if (48 <= c && c <= 57) {
         return c - 48;
     }
-    // Если маленькие буквы
     return c - 87;
 }
 
-string cc(long long n, int b)
+char getChar(int number)
 {
-    string nb;
-    while (n > 0)
-    {
-        int ost = n % b;
-        if (ost > 9) {
-            char digit;
-            digit = 87 + ost;
-            string s = "";
-            s.push_back(digit);
-            nb.insert(0, s);
-
-        } 
-        else {
-            nb.insert(0, to_string(ost));
-        }
-        n /= b;
+    if (0 <= number && number <= 9) {
+        return (char) (number + 48);
     }
-    return nb;
+    return (char) (number + 87);
+}
+
+string cc(string number, int from, int to)
+{
+    long long number10 = 0;
+
+    for (int i = 0; i < number.size(); i++) {
+        int pw = number.size() - i - 1;
+        number10 += getValue(number[i]) * pow(from, pw);
+    }
+
+    string newNumber = "";
+
+    if (number10 == 0) {
+        return "0";
+    }
+
+    while (number10 > 0) {
+        newNumber.push_back(getChar(number10 % to));
+        number10 /= to;
+    }
+    reverse(newNumber.begin(), newNumber.end());
+    return newNumber;
 }
 
 
+int main()
+{
+    int A, B;
+    string number;
 
-int main(void) {
-    int a, b;
-    string n;
-    cin >> a >> b;
-    cin >> n;
-
-    if (n == "0") {
-        cout << 0;
-        return;
-    }
-
-    long long n10 = 0;
-
-    for (int i = n.size() - 1; i >= 0; --i)
-    {
-        char c = n[i];
-        int value = getValue(c);
-        int pw = n.size() - i - 1;
-        n10 += pow(a, pw) * value;
-    }
-
-    cout << cc(n10, b);
-
+    cin >> A >> B >> number;
+    cout << cc(number, A, B) << endl;
+    
     return 0;
 }
