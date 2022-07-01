@@ -14,35 +14,25 @@ int main(void)
     vector<char> str2(n2);
 
     for (int  i = 0; i < str1.size(); i++)
-    {
         cin >> str1[i];
-    }
     
     for (int i = 0; i < str2.size(); i++) 
-    {
         cin >> str2[i];
-    }
 
     int point1 = 0;
     int point2 = str2.size();
     int ch = 0;
-    bool is_true = false;
+    bool isTrue = false;
  
-    for (int i = 0; i < str1.size()-str2.size()+1; i++) 
-    {
-        is_true = true;
-        for (int j = 0; j < str2.size(); ++j) 
-        {
+    for (int i = 0; i < str1.size() - str2.size() + 1; i++) {
+        isTrue = true;
+        for (int j = 0; j < str2.size(); ++j)
             if (str1[j + point1] != str2[j])
-            {
-                is_true = false;
-            }
-        }
+                isTrue = false;
 
-        if (is_true)
-        {
+        if (isTrue)
             ch++;
-        }
+
         point1++;
     }
     cout << ch;
