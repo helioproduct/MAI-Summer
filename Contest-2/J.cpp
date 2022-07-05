@@ -16,15 +16,24 @@ int main()
 
     sort(a.begin(), a.end());
 
-    int count = 0;
     int index;
 
-    cout << endl;
+    int count = 0;
 
-    for (int i = 0; i < a.size(); i++) {
-        for (int j = i + 1; j < a.size(); j++) {
-            auto it = upper_bound(a.begin() + j, a.end(), a[i] + a[j]);
-            index = it - a.begin();
+
+    for (int i = 0; i < n; i++) {
+        for (int j = i + 1; j < n; j++) {
+            auto start = a.begin() + j + 1;
+            int sum = a[i] + a[j];
+            auto it = upper_bound(start, a.end(), sum);
+
+
+            if (it == a.end()) {
+                cout << "end\n";
+            }
+
+            index = it - a.begin(); 
+            count += index - j - 1;
         }
     }
 
