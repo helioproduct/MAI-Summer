@@ -1,43 +1,40 @@
 #include <iostream>
-#include <algorithm>
 #include <vector>
+#include <algorithm>
+#include <climits>
 
 using namespace std;
 
-long long hashit(vector<int> v, int n, int mod)
+const long long H = (long long) 1e9 + 7;
+
+int main()
 {
-    long long result = 0;
-
-    for (int i = 0; i <= n - 1; i++) {
-        result += (i + 1) * v[i] * (mod * (1e9 + 7));
-    }
-    return result;
-}
-
-
-int main(void)
-{
-
     ios::sync_with_stdio(false);
-    cin.tie(0);
-    cout.tie(0);
-
+    cin.tie(0); cout.tie(0);
+    
     int n, a, m, k, mod;
+    cin >> n >> a >> m >> k >> mod; 
 
-    cin >> n;
-    cin >> a >> m >> k >> mod;
+    vector<int> count(mod, 0);
 
-    vector<int> v(n);
-
-    for (int i = 0; i < n; ++i){
-        v[i] = a;
+    for (int i = 0; i < n; i++) {
+        count[a]++;
         a = (a * m + k) % mod;
     }
 
-    sort(v.begin(), v.end());
+    long long sum = 0;
 
-    cout << hashit(v, n, mod) << endl;
-    
+    int index = 0;
+
+    for (int i = 0; i < mod; i++) {
+        for (int j = 0; j < count[i]; j++) {
+            sum += (index + 1) * i;
+            sum %= H;            
+            index++;
+        }
+    }
+
+    cout << sum << endl;
 
     return 0;
 }

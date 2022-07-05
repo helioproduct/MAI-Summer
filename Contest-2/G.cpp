@@ -1,33 +1,36 @@
 #include <iostream>
-#include <algorithm>
 #include <vector>
+#include <set>
 
 using namespace std;
 
 int main()
 {
+    ios::sync_with_stdio(false);
+    cin.tie(0);
+    cout.tie(0);
+
     int n, x;
     cin >> n;
-    
-    vector<int> a(n);
+
+    multiset<int> s;
 
     for (int i = 0; i < n; i++) {
-        cin >> a[i];
+        cin >> x;
+        s.insert(x);
     }
 
-    sort(a.begin(), a.end());
+    int first, second;
+    while (s.size() > 1) {
+        first = *s.begin();
+        s.erase(s.find(x));
 
-    while (a.size() != 1) {
-        cout << a[0] << " " << a[1] << endl;
+        second = *s.begin();
+        s.erase(s.find(x));
 
-        int y = a[0] + a[1];
+        s.insert(first + second);
 
-        auto it = lower_bound(a.begin(), a.end(), y);
-        a.insert(it, 1, y);
-
-        a.erase(a.begin());
-        a.erase(a.begin());
+        cout << first << " " << second << endl;
     }
-
     return 0;
 }
