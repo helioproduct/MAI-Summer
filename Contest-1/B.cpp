@@ -3,7 +3,8 @@
 
 using namespace std;
 
-void printVector(vector <long long> v) 
+// Функция печати вектора
+void print_vector(vector <long long> v) 
 {
     for (int i = 0; i < v.size(); i++) {
         cout << v[i];
@@ -13,10 +14,9 @@ void printVector(vector <long long> v)
     }
 }
 
-int main()
+int main(void)
 {
     int n;
-    long long temp;
     cin >> n;
 
     vector<long long> a(n);
@@ -25,22 +25,19 @@ int main()
     }
 
     int l, r;
-
     while (1) {
         cin >> l >> r;
         if (l == 0 && r == 0) break;
         l--; r--;
-
+        // Разворот подмассива от l до r
         while (l < r) {
-            temp = a[l];
-            a[l] = a[r];
-            a[r] = temp;
+            swap(a[l], a[r]);
             l++;
             r--;
         }
     }
 
-    printVector(a);
+    print_vector(a);
     
     return 0;
 }
