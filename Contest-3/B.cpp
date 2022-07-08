@@ -9,12 +9,9 @@ int main()
 {
     int l, r;
     cin >> l >> r;
-
     vector<long long> dp(r + 1, 0);
-
     dp[0] = 0;
     dp[1] = 1;
-
 
     for (int i = 1; i <= r; i++) {
 
@@ -24,15 +21,12 @@ int main()
         }
 
     }
-
-
     long long sum = 0;
     for (int i = l; i <= r; i++) {
         sum += dp[i];
         sum %= MOD;
     }
-
-   cout << sum << endl;
+    cout << sum << endl;
 
     return 0;
 }
