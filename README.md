@@ -9,3 +9,4 @@ Repository for summer practice at MAI in 2022
 **Contest-6:** Длинная арифметика  
 **Contest-7:** Основы теории графов  
 **Contest-8:** Кратчайшие пути во взвешенных графах    
+**Contest-9:** Алгоритмы на строках  
