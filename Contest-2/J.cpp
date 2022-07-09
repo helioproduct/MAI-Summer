@@ -13,14 +13,10 @@ int main()
     for (int i = 0; i < n; i++) {
         cin >> a[i];
     }
-
     sort(a.begin(), a.end());
 
     int index;
-
     int count = 0;
-
-
     for (int i = 0; i < n; i++) {
         for (int j = i + 1; j < n; j++) {
             auto start = a.begin() + j + 1;
