@@ -1,47 +1,55 @@
 #include <iostream>
+#include <string>
 #include <vector>
 
 using namespace std;
 
-const int64_t INF = 1e18;
+vector<int> z_func(const string &s)
+{
+    int n = s.size();
+    vector<int> z(n);
+    z[0] = n;
+    int l = 0;
+    int r = 0;
 
-struct wedge {
-    int u, v;
-    int64_t w;
-};
+    for (int i = 1; i < n; i++) {
+        if (i <= r) {
+            z[i] = min(z[i - l], r - i + 1);
+        }
+        while (i + z[i] < n and s[z[i]] == s[i + z[i]]) {
+            ++z[i];
+        }
+        if (i + z[i] >= r) {
+            l = i;
+            r = i + z[i] - 1;
+        }
+    }
+    return z;
+}
 
 int main(void)
 {
-    int n;
-    cin >> n;
+    ios::sync_with_stdio(false);
+    cin.tie();
+    cout.tie(NULL);
 
-    vector<wedge> g;
-    vector< vector <int64_t> > d(n, vector<int64_t> (n, INF));
+    string t, p;
+    cin >> t >> p;
 
-    for (int i = 0; i < n; i++) {
-        for (int j = 0; j < n; j++) {
-            if (i == j) {
-                d[i][j] = 0;
-            }
-            int64_t w;
-            cin >> w;
-            d[i][j] = w;
+    string s = t + "$" + p;
+    vector<int> z = z_func(s);
+
+    int count = 0;
+    for (int i = 0; i < s.size(); i++) {
+        if (z[i] == p.size()) {
+            count++;
         }
     }
 
-    for (int k = 0; k < n; ++k) {
-        for (int i = 0; i < n; ++i) {
-            for (int j = 0; j < n; ++j) {
-                d[i][j] = min(d[i][j], d[i][k] + d[k][j]);
-            }
-        }
-    }
-
-    for (int i = 0; i < n; i++) {
-        for (int j = 0; j < n; j++) {
-            cout << d[i][j] << " ";
-        }
-        cout << endl;
+    if (count != 0) {
+        cout << "TAK\n" << count << endl;
+    } else {
+        cout << "NIE" << endl;
     }
 
     return 0;

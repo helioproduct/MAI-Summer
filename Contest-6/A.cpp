@@ -9,9 +9,8 @@ const double PI = std::acos(-1);
 
 void fft(vc & a, bool invert) {
     size_t n = a.size();
-    if (n == 1) {
+    if (n == 1)
         return;
-    }
     
     vc a0(n / 2), a1(n / 2);
     for (size_t i = 0, j = 0; j < n; ++i, j += 2) {
@@ -24,9 +23,8 @@ void fft(vc & a, bool invert) {
     
     double phi = 2.0 * PI / n;
     
-    if (invert) {
+    if (invert)
         phi = -phi;
-    }
     
     complex w(1), wn(std::cos(phi), std::sin(phi));
     
