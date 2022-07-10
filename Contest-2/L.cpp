@@ -16,26 +16,39 @@ int min(vector<int> &v)
     return min;
 }
 
-// Количество копий за время t
-int psi(int t, vector<int> &xeroxes)
+// Кол-во копий за время t
+int64_t function(int t, vector<int> &printers)
 {
-    int total_time = min(xeroxes);
-    for (int i = 0; i < xeroxes.size(); i++) {
-        total_time += (t - min(xeroxes)) / xeroxes[i]; 
+    int k = printers.size();
+    int minTime = min(printers);
+    int64_t copies = 1;
+
+    if (k == 2) {
+        copies += (t - minTime) / printers[0];
+        copies += (t - minTime) / printers[1];
+        return copies;
     }
-    return total_time;
+    minTime = 10000;
+    if (t < minTime) {
+
+    }   
+
+
 }
 
 int main(void)
-{
+{   
+    // n - кол-во копий
+    // k - кол-во принтеров
     int n, k;
     cin >> n >> k;
 
-    vector<int> xeroxes(k);
+    vector<int> printers(k);
     for (int i = 0; i < k; i++) {
-        cin >> xeroxes[i];
+        cin >> printers[i];
     }
-    psi(1, xeroxes);
+
+
 
     return 0;
 }

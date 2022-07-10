@@ -112,9 +112,6 @@ std::string fft_mult(const std::string & a, const std::string & b) {
     return ab;
 }
 
-
-
-
 std::string fast_power(long long a, long long b) 
 {
     if (b == 0) {

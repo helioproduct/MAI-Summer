@@ -36,7 +36,6 @@ int main(void)
         }
     }
 
-
     if (n == 1) {
         ansMn.push_back(1);
         ansMx.push_back(1);

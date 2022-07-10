@@ -27,22 +27,12 @@ vector<int> z_func(const string &s)
     return z;
 }
 
-vector<int> z_function_trivial (string s) {
-	int n = (int) s.length();
-	vector<int> z (n);
-    z[0] = s.size();
-	for (int i=1; i<n; ++i)
-		while (i + z[i] < n && s[z[i]] == s[i+z[i]])
-			++z[i];
-	return z;
-}
-
 int main(void)
 {
     string s;
     cin >> s;
 
-    vector<int> z = z_function_trivial(s);
+    vector<int> z = z_func(s);
     for (int i = 0; i < s.size(); i++) {
         cout << z[i] << " ";
     }
