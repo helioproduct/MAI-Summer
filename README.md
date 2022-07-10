@@ -12,5 +12,5 @@ Repository for summer practice at MAI in 2022
 **Contest-9:** Алгоритмы на строках  
 
 
-[**Contest-1:**](./Contest1)  
+[**Contest-1:**](./Contest-1)  
 
