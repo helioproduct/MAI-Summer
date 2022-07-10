@@ -7,11 +7,9 @@ using namespace std;
 int solve(double a, double base)
 {
     int pw = log(a) / log(base);
-
     if (pow(3, pw) == a) {
         return log(a) / log(base);
     }
-
     return log(a) / log(base) + 1;
 }
 

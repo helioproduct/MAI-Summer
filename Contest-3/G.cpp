@@ -18,6 +18,7 @@ int main()
         if (dp[i + 1] + i + 1 < dp[i]) {
             dp[i] = dp[i + 1] + i + 1;
         }
+        
 
         if (i * 3 <= n) {
             dp[i] = min(dp[i * 3] + i * 3, dp[i]);
