@@ -11,25 +11,25 @@ int main(void)
     int n1, n2;
     cin >> n1 >> n2;
 
-    // Первая строка
+    // first string
     vector<char> str1(n1);
-    // Вторая строка
+    // second string
     vector<char> str2(n2);
 
+    // first string input
     for (int  i = 0; i < str1.size(); i++) {
         cin >> str1[i];
     }
-    
+    // second string input
     for (int i = 0; i < str2.size(); i++) {
         cin >> str2[i];
     }
 
-    int p1 = 0;
+    int p1 = 0, ch = 0;
     int p2 = str2.size();
-    int ch = 0;
     bool flag = false;
  
-    // Прямой поиск
+    // direct search
     for (int i = 0; i < str1.size() - str2.size() + 1; i++) {
         flag = true;
         for (int j = 0; j < str2.size(); ++j)
@@ -41,5 +41,7 @@ int main(void)
         }
         p1++;
     }
+    // result output
     cout << ch << endl;
+    return 0;
 }
