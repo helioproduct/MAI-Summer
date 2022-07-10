@@ -10,3 +10,7 @@ Repository for summer practice at MAI in 2022
 **Contest-7:** Основы теории графов  
 **Contest-8:** Кратчайшие пути во взвешенных графах    
 **Contest-9:** Алгоритмы на строках  
+
+
+[**Contest-1:**](./Contest1)  
+
