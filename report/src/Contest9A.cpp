@@ -4,6 +4,7 @@
 
 using namespace std;
 
+// z-function of string calculation function
 vector<int> z_func(const string &s)
 {
     int n = s.size();
@@ -31,12 +32,11 @@ int main(void)
 {
     string s;
     cin >> s;
-
     vector<int> z = z_func(s);
+    // result output
     for (int i = 0; i < s.size(); i++) {
         cout << z[i] << " ";
     }
     cout << endl;
-
     return 0;
 }

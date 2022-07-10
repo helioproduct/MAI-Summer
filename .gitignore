@@ -33,3 +33,8 @@
 
 # IDE Settings
 *.vscode
+
+# LaTeX
+*.out
+*.log
+*.auxclear
