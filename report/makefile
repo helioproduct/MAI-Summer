@@ -1,7 +1,11 @@
 filename=report
 
 pdf:
-	pdflatex ${filename}.tex
+	pdflatex ${filename}.tex > /dev/null
 
 clean:
-	rm -rf *.aux *.log *.out
+	rm -rf *.aux *.log *.out *.gz *.fls *.fdb*
+
+cleanall:
+	rm -rf *.aux *.log *.out *.gz *.fls *.fdb* *.pdf
+
